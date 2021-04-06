@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+// -----------------------------------------------
+// Default Stylings
+// -----------------------------------------------
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto, sans-serif;
+  overflow: hidden;
+  height: 100vh;
+}
+// -----------------------------------------------
+// Variables
+// -----------------------------------------------
+
+$line-fill: rgb(97, 97, 246);
+$line-empty: rgb(231, 231, 231);
+
+// -----------------------------------------------
+.container {
+  text-align: center;
+
+  .btn {
+    background-color: $line-fill;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 80px;
+    border-radius: 3px;
+    margin: 2rem 0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:active {
+      transform: scale(0.93);
+    }
+    &:disabled {
+      background-color: $line-empty;
+      color: black;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.progress-container {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  max-width: 90%;
+  width: 40vw;
+
+  &::before {
+    content: "";
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    height: 4px;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: -1;
+    background-color: $line-empty;
+  }
+
+  .progress {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    height: 4px;
+    width: 0%;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: width 0.2s ease-in-out;
+    background-color: $line-fill;
+  }
+  .circle {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: grey;
+    background-color: white;
+    border: 3px solid $line-empty;
+    transition: all 0.4s ease-in-out;
+
+    &.active {
+      border-color: $line-fill;
+    }
+  }
+}
